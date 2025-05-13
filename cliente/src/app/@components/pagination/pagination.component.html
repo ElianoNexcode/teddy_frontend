@@ -1,0 +1,9 @@
+<div class="pagination-container">
+  <span
+    *ngFor="let page of getPageNumbers()"
+    class="page-item"
+    [class.active]="page === currentPage"
+    (click)="changePage(page)">
+    {{ page }}
+  </span>
+</div>

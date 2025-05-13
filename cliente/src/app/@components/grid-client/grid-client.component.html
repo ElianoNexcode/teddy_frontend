@@ -1,0 +1,46 @@
+<div class="client-list-container">
+  <div class="client-list-header" *ngIf="mode === 'default'">
+    <span>{{ totalClients }} clientes encontrados:</span>
+    <div class="page-size-selector">
+      <label for="pageSize">Clientes por página:</label>
+      <div class="select-wrapper">
+        <select id="pageSize" [(ngModel)]="selectedPageSize" (change)="onPageSizeChange()">
+          <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
+        </select>
+        <span class="custom-arrow">▾</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="client-list-header" *ngIf="mode === 'selection'">
+    <span class="client-selected">Cliente selecionados:</span>
+  </div>
+
+  <div class="client-grid">
+    <app-card-client *ngFor="let cliente of clientes"
+                      [cliente]="cliente"
+                      [mode]="mode"
+                      (addRequest)="onAddToSelected($event)"
+                      (removeRequest)="onRemoveFromSelected($event)"
+                      (editRequest)="openModalForEdit($event)"
+                      (deleteRequest)="openModalForDelete($event)">
+    </app-card-client>
+  </div>
+
+  <div class="create-client-btn" *ngIf="mode === 'default'" (click)="openModalForCreate()">
+    <button>Criar cliente</button>
+  </div>
+
+  <div class="create-client-btn" *ngIf="mode === 'selection'" (click)="onClearSelected()">
+    <button>Limpar clientes selecionados</button>
+  </div>
+
+  <app-modal-client *ngIf="showClientModal"
+                    [clientData]="selectedClientData"
+                    (closeModal)="handleCloseModal()"
+                    [mode]="currentModalMode"
+                    (deleteConfirm)="handleDeleteConfirm($event)"
+                    (saveClient)="handleSaveClient($event)">
+  </app-modal-client>
+
+</div>

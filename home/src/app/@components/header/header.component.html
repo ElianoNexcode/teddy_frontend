@@ -1,0 +1,33 @@
+<div class="layout-container">
+  <div class="header">
+    <div class="menu">
+      <div class="clientes"
+           [class.active]="menuSelecionado == 'clientes'"
+           (click)="selectMenu('clientes')">Clientes
+      </div>
+      <div class="clientes-selecionados"
+           [class.active]="menuSelecionado == 'clientes-selecionados'"
+           (click)="selectMenu('clientes-selecionados')">Clientes selecionados
+      </div>
+      <div class="sair"
+           [class.active]="menuSelecionado == 'sair'"
+           (click)="selectMenu('sair')">Sair
+      </div>
+    </div>
+    <div class="usuario">
+      <span class="nome-usuario">Olá, </span>
+      <span class="nome-usuario-bold">{{usuarioNome}}</span>
+    </div>
+    <div class="logo">
+    <img src="assets/images/teddy-logo.png" alt="Logo da empresa" />
+    </div>
+    <div class="menu-icon">
+      <svg (click)="toggleSideNav()" width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0" width="24" height="4" rx="2" fill="#555" />
+        <rect y="8" width="24" height="4" rx="2" fill="#555" />
+        <rect y="16" width="24" height="4" rx="2" fill="#555" />
+      </svg>
+    </div>
+    <app-side-navigation [isOpen]="isSideNavOpen"  (menuClosed)="onSideNavClosed()" ></app-side-navigation>
+  </div>
+</div>

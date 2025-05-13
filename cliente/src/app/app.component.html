@@ -1,0 +1,14 @@
+<app-grid-client
+  [mode]="selected? 'selection': 'default'"
+  [page]="currentPage"
+  [pageSize]="selectedPageSize"
+  [isSelected]="selected"
+  (pageSizeChange)="onPageSizeChange($event)"
+  (totalPagesChange)="updateTotalPages($event)">
+</app-grid-client>
+
+<app-pagination *ngIf="!selected"
+  [totalPages]="totalPages"
+  [currentPage]="currentPage"
+  (pageChanged)="onPageChange($event)">
+</app-pagination>

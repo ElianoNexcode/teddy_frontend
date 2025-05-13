@@ -1,0 +1,65 @@
+<div class="modal-overlay" (click)="onClose()" *ngIf="mode !== 'delete'">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div>{{ modalTitle }}</div>
+      <img src="assets/images/close.png" alt="Adicionar" class="close-icon" (click)="onClose()" />
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #clientForm="ngForm" style="display: contents"
+      *ngIf="mode === 'create' || mode === 'edit'">
+      <div class="input-wrapper">
+        <input type="text" id="clientName" placeholder="Digite o seu nome:" [(ngModel)]="formData.name"
+          name="clientName" required #nameInput="ngModel" />
+
+        <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)" style="display: none;">
+          Nome inválido
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <input type="number" id="clientSalary" placeholder="Digite o salário:" [(ngModel)]="formData.salary"
+          name="clientSalary" required min="0" #salaryInput="ngModel" />
+        <div *ngIf="salaryInput.invalid && (salaryInput.dirty || salaryInput.touched)" style="display: none;">
+          Salário inválido
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <input type="number" id="clientCompanyValuation" placeholder="Digite o valor da empresa:"
+          [(ngModel)]="formData.companyValuation" name="clientCompanyValuation" required min="0"
+          #companyValuationInput="ngModel" />
+        <div *ngIf="companyValuationInput.invalid && (companyValuationInput.dirty || companyValuationInput.touched)"
+          style="display: none;">
+          Valor da empresa inválido
+        </div>
+      </div>
+
+      <button type="submit" class="create-client-btn" [disabled]="clientForm.invalid">
+        {{ submitButtonText }}
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<div class="modal-overlay" (click)="onClose()" *ngIf="mode === 'delete'">
+  <div class="modal-container-excluir" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div>{{ modalTitle }}</div>
+      <img src="assets/images/close.png" alt="Adicionar" class="close-icon" (click)="onClose()" />
+    </div>
+    <div class="confirmation-message"><span style="font-family: Inter;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        ">Você está prestes a excluir o cliente: </span><span style="font-family: Inter;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #000000;
+        ">{{ confirmationMessage }}</span></div>
+    <button type="button" class="create-client-btn" (click)="onSubmit()">{{ submitButtonText }}</button>
+  </div>
+</div>

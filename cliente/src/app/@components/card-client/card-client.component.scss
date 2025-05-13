@@ -1,0 +1,64 @@
+.card-client {
+  width: 285px;
+  height: 138px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.client-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  line-height: 100%;
+}
+
+.client-salary,
+.client-company {
+  font-weight: 400;
+  font-size: 14px;
+  color: #000;
+  line-height: 100%;
+  margin-top: 6px;
+}
+
+.icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 8px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.icon.plus {
+  width: 17px;
+  height: 17px;
+}
+
+.icons-minus {
+  width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 16px;
+    margin-top: 8px;
+
+}
+
+.icon.trash {
+  filter: invert(24%) sepia(87%) saturate(6481%) hue-rotate(357deg) brightness(101%) contrast(120%);
+}

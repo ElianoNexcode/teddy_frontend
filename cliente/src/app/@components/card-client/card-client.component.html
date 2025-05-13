@@ -1,0 +1,17 @@
+<div class="card-client">
+  <div class="client-name">{{ cliente.name }}</div>
+  <div class="client-salary">Salário: {{ cliente.salary | currency:'BRL' }}</div>
+  <div class="client-company">Empresa: {{ cliente.companyValuation | currency:'BRL' }}</div>
+
+<div class="icons" *ngIf="mode === 'default'">
+  <img src="assets/images/plus.png" alt="Adicionar" class="icon plus" (click)="onAdd()" />
+  <img src="assets/images/pencil.png" alt="Editar" class="icon pencil" (click)="onEdit()" />
+  <img src="assets/images/trash.png" alt="Excluir" class="icon trash" (click)="onDelete()" />
+</div>
+
+<div class="icons-minus" *ngIf="mode !== 'default'">
+  <img src="assets/images/minus.png" alt="Remover" class="icon plus" (click)="onRemove()" />
+</div>
+</div>
+
+<app-modal-client *ngIf="showModal" (closeModal)="closeModal()"></app-modal-client>

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+/* Reset básico para evitar margens indesejadas */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Garantir que o container principal ocupe a tela toda */
+app-root {
+  display: block;
+  height: 100%;
+}
